@@ -33,7 +33,7 @@ interface NavBarProps {
   page: string;
 }
 function NavBar({ page }: NavBarProps) {
-  const [pointerXLocation, setPointerPosition] = useState(440);
+  const [pointerXLocation, setPointerPosition] = useState(0);
   const homeLink = useRef<HTMLAnchorElement | null>(null);
 
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -51,7 +51,7 @@ function NavBar({ page }: NavBarProps) {
   }, []);
 
   return (
-    <nav className="font-poppins flex items-center justify-center">
+    <nav className="flex items-center justify-center">
       <PagePointer xPos={pointerXLocation} />
 
       <Link to="/" onClick={() => setPointerPosition(
@@ -64,7 +64,7 @@ function NavBar({ page }: NavBarProps) {
         />
       </Link>
 
-      <ul className="ml-auto flex justify-center space-x-12 text-xl">
+      <ul className="ml-auto flex justify-center space-x-12 text-xl text-blue-900">
         <Link to="/" ref={homeLink} onClick={handleLinkClick}>
           Home
         </Link>
