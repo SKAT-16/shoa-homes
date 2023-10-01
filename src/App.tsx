@@ -1,10 +1,18 @@
-function App() {
+import AppRouter from './routes/AppRouter';
+import Header from './components/_common/header';
+import Footer from './components/_common/footer';
+import { BrowserRouter } from 'react-router-dom';
 
+function App() {
   return (
-    <>
-      <h1 className="text-5xl text-yellow-500">hh</h1>
-    </>
-  )
+    <BrowserRouter>
+      <Header />
+      <main className="container mx-auto p-4">
+        <AppRouter />
+      </main>
+      <Footer />
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;
