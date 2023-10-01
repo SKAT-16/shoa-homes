@@ -1,14 +1,14 @@
 import { Link, Location, useLocation } from "react-router-dom";
 import dark_logo from "../../assets/images/logo-dark-blue.png";
 import light_logo from "../../assets/images/logo-light-white.png";
-import { useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 function Header() {
   const currentPage: Location = useLocation();
   return (
-    <>
+    <div className="relative px-12 pt-12 pb-5 shadow-md">
       <NavBar page={currentPage.pathname} />
-    </>
+    </div>
   );
 }
 
@@ -33,7 +33,8 @@ interface NavBarProps {
   page: string;
 }
 function NavBar({ page }: NavBarProps) {
-  const [pointerXLocation, setPointerPosition] = useState(400);
+  const [pointerXLocation, setPointerPosition] = useState(440);
+  const homeLink = useRef<HTMLAnchorElement | null>(null);
 
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     setPointerPosition(
@@ -42,20 +43,29 @@ function NavBar({ page }: NavBarProps) {
     );
   };
 
+  useEffect(() => {
+    setPointerPosition(
+      homeLink.current.getBoundingClientRect().left +
+      homeLink.current.getBoundingClientRect().width / 3
+    );
+  }, []);
+
   return (
-    <nav className="relative py-12 font-poppins shadow-md flex items-center justify-center">
+    <nav className="font-poppins flex items-center justify-center">
       <PagePointer xPos={pointerXLocation} />
-      
-      <Link to="/" className="ml-10">
+
+      <Link to="/" onClick={() => setPointerPosition(
+      homeLink.current.getBoundingClientRect().left +
+      homeLink.current.getBoundingClientRect().width / 3)}>
         <img
           src={page.includes("projects") ? light_logo : dark_logo}
           alt="LOGO"
-          className="w-20 hover:scale-105 hover:-rotate-3 active:scale-90 transition-transform duration-200 "
+          className="w-20 hover:scale-105 hover:-rotate-3 active:scale-90 transition-transform duration-300"
         />
       </Link>
 
-      <ul className="ml-auto mr-20 flex justify-center space-x-12 text-xl">
-        <Link to="/" onClick={handleLinkClick}>
+      <ul className="ml-auto flex justify-center space-x-12 text-xl">
+        <Link to="/" ref={homeLink} onClick={handleLinkClick}>
           Home
         </Link>
         <Link to="/blog" onClick={handleLinkClick}>

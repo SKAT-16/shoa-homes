@@ -7,7 +7,7 @@ function App() {
   return (
     <BrowserRouter>
       <Header />
-      <main className="container mx-auto p-4">
+      <main className="container">
         <AppRouter />
       </main>
       <Footer />
