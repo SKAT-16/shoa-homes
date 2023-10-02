@@ -5,6 +5,7 @@ import Projects from "../components/Projects/projects";
 import About from "../components/About/about";
 import Contact from "../components/Contact/contact";
 import Partnership from "../components/Partnership/partnership";
+import ProjectDetails from "../components/Projects/project_details";
 
 function AppRouter() {
   return (
@@ -13,6 +14,7 @@ function AppRouter() {
       <Route path="/blog" element={<Blog />} />
       <Route path="/partnership" element={<Partnership />} />
       <Route path="/projects" element={<Projects />} />
+      <Route path="/projects/:id" element={<ProjectDetails />} />
       <Route path="/about" element={<About />} />
       <Route path="/contact" element={<Contact />} />
     </Routes>

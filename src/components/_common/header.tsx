@@ -2,6 +2,7 @@ import { Link, Location, useLocation } from "react-router-dom";
 import dark_logo from "../../assets/logo-dark-blue.png";
 import light_logo from "../../assets/logo-light-white.png";
 import { useEffect, useState, useRef } from "react";
+import SearchBar from "./search_bar";
 
 const navLinkStrings: string[] = [
   "Home",
@@ -20,29 +21,13 @@ const navLinkEndPoints: string[] = [
   "/contact",
 ];
 
-function Header() {
+export default function Header() {
   const currentPage: Location = useLocation();
   return (
-    <div className="relative px-12 pt-12 pb-5 shadow-sm">
+    <div className={`relative px-12 pt-12 pb-5 shadow-md ${currentPage.pathname.includes("projects") && "bg-nav-bar"}`}>
       <NavBar page={currentPage.pathname} />
+      {currentPage.pathname.includes("projects") && <SearchBar />}
     </div>
-  );
-}
-
-interface PagePointerProps {
-  xPos: number;
-}
-function PagePointer({ xPos }: PagePointerProps) {
-  const translateX = `translateX(${xPos}px)`;
-  const pointerStyle = {
-    transform: translateX,
-  };
-
-  return (
-    <div
-      className="absolute bg-pointer-color w-4 h-20 shadow-lg top-0 left-0 transition-transform duration-500 ease-in-out"
-      style={pointerStyle}
-    />
   );
 }
 
@@ -61,8 +46,8 @@ function NavBar({ page }: NavBarProps) {
   };
 
   useEffect(() => {
-    const index = navLinkEndPoints.findIndex((item) => page === item);
-    const currLink = navRef.current?.children[index];
+    const index: number = navLinkEndPoints.findIndex((item) => page === item);
+    const currLink: HTMLAnchorElement | null = navRef.current?.children[index];
     setPointerPosition(
       currLink.getBoundingClientRect().left +
         currLink.getBoundingClientRect().width / 2
@@ -70,9 +55,9 @@ function NavBar({ page }: NavBarProps) {
   }, []);
 
   return (
-    <nav className="flex items-center justify-center">
-      <PagePointer xPos={pointerXLocation} />
+    <nav className="flex items-center justify-center" >
 
+      <PagePointer page={page} xPos={pointerXLocation} />
       <Link
         to="/"
         onClick={() =>
@@ -89,13 +74,14 @@ function NavBar({ page }: NavBarProps) {
       </Link>
 
       <ul
-        className="ml-auto flex justify-center space-x-12 text-xl text-blue-900"
+        className={`ml-auto flex justify-center space-x-12 text-xl ${page.includes("projects") ? "text-white" : "text-blue-900"}`}
         ref={navRef}>
         {navLinkStrings.map((item, index) => (
           <Link
             to={`${navLinkEndPoints[index]}`}
             key={index}
-            onClick={handleLinkClick}>
+            onClick={handleLinkClick}
+            className={`hover:scale-110 active:scale-95 transition duration-200`}>
             {item}
           </Link>
         ))}
@@ -104,4 +90,22 @@ function NavBar({ page }: NavBarProps) {
   );
 }
 
-export default Header;
+interface PagePointerProps {
+  page: string;
+  xPos: number;
+}
+function PagePointer({ page, xPos }: PagePointerProps) {
+  const translateX = `translateX(${xPos}px)`;
+  const pointerStyle = {
+    transform: translateX,
+  };
+
+  return (
+    <div
+      className={`absolute ${
+        page.includes("projects") ? "bg-white" : "bg-pointer-color"
+      }  w-4 h-20 shadow-lg top-0 left-0 transition-transform duration-500 ease-in-out`}
+      style={pointerStyle}
+    />
+  );
+}
