@@ -3,6 +3,23 @@ import dark_logo from "../../assets/logo-dark-blue.png";
 import light_logo from "../../assets/logo-light-white.png";
 import { useEffect, useState, useRef } from "react";
 
+const navLinkStrings: string[] = [
+  "Home",
+  "Blog",
+  "Partnership & Dev't",
+  "Projects",
+  "About Us",
+  "Contact Us",
+];
+const navLinkEndPoints: string[] = [
+  "/",
+  "/blog",
+  "/partnership",
+  "/projects",
+  "/about",
+  "/contact",
+];
+
 function Header() {
   const currentPage: Location = useLocation();
   return (
@@ -34,7 +51,7 @@ interface NavBarProps {
 }
 function NavBar({ page }: NavBarProps) {
   const [pointerXLocation, setPointerPosition] = useState(0);
-  const homeLink = useRef<HTMLAnchorElement | null>(null);
+  const navRef = useRef<HTMLAnchorElement | null>(null);
 
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     setPointerPosition(
@@ -44,9 +61,11 @@ function NavBar({ page }: NavBarProps) {
   };
 
   useEffect(() => {
+    const index = navLinkEndPoints.findIndex((item) => page === item);
+    const currLink = navRef.current?.children[index];
     setPointerPosition(
-      homeLink.current.getBoundingClientRect().left +
-      homeLink.current.getBoundingClientRect().width / 3
+      currLink.getBoundingClientRect().left +
+        currLink.getBoundingClientRect().width / 2
     );
   }, []);
 
@@ -54,9 +73,14 @@ function NavBar({ page }: NavBarProps) {
     <nav className="flex items-center justify-center">
       <PagePointer xPos={pointerXLocation} />
 
-      <Link to="/" onClick={() => setPointerPosition(
-      homeLink.current.getBoundingClientRect().left +
-      homeLink.current.getBoundingClientRect().width / 3)}>
+      <Link
+        to="/"
+        onClick={() =>
+          setPointerPosition(
+            navRef.current.children[0].getBoundingClientRect().left +
+              navRef.current.children[0].getBoundingClientRect().width / 3
+          )
+        }>
         <img
           src={page.includes("projects") ? light_logo : dark_logo}
           alt="LOGO"
@@ -64,28 +88,17 @@ function NavBar({ page }: NavBarProps) {
         />
       </Link>
 
-      <ul className="ml-auto flex justify-center space-x-12 text-xl text-blue-900">
-        <Link to="/" ref={homeLink} onClick={handleLinkClick}>
-          Home
-        </Link>
-        <Link to="/blog" onClick={handleLinkClick}>
-          Blog
-        </Link>
-        <Link to="/partnership" onClick={handleLinkClick}>
-          Partnership & Dev't
-        </Link>
-        <Link to="/projects" onClick={handleLinkClick}>
-          Projects
-        </Link>
-        <Link to="/partnership" onClick={handleLinkClick}>
-          Partnership
-        </Link>
-        <Link to="/about" onClick={handleLinkClick}>
-          About Us
-        </Link>
-        <Link to="/contact" onClick={handleLinkClick}>
-          Contact Us
-        </Link>
+      <ul
+        className="ml-auto flex justify-center space-x-12 text-xl text-blue-900"
+        ref={navRef}>
+        {navLinkStrings.map((item, index) => (
+          <Link
+            to={`${navLinkEndPoints[index]}`}
+            key={index}
+            onClick={handleLinkClick}>
+            {item}
+          </Link>
+        ))}
       </ul>
     </nav>
   );
