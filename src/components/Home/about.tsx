@@ -11,7 +11,7 @@ export default function About() {
       <div
         className="w-full h-[450px] p-6"
         style={{
-          backgroundImage: "linear-gradient(rgba(0, 0, 30, 0.5), rgba(0, 0, 30, 0.5)), url(https://plus.unsplash.com/premium_photo-1675952691326-0f7f5a5a6dad?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80)",
+          backgroundImage: "linear-gradient(rgba(0, 0, 100, 0.5), rgba(0, 0, 100, 0.5)), url(https://plus.unsplash.com/premium_photo-1675952691326-0f7f5a5a6dad?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80)",
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}>

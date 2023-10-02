@@ -72,7 +72,7 @@ function NavBar({ page }: NavBarProps) {
           Blog
         </Link>
         <Link to="/partnership" onClick={handleLinkClick}>
-          Partnership
+          Partnership & Dev't
         </Link>
         <Link to="/projects" onClick={handleLinkClick}>
           Projects

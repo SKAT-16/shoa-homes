@@ -5,7 +5,7 @@ import twitter_icon from "../../assets/icons/twitter.png";
 
 function Footer() {
   return (
-    <footer className="bg-pointer-color p-8 w-full flex items-stretch">
+    <footer className="bg-pointer-color p-8 mt-10 w-full flex items-stretch">
       <div className="p-5 flex-1 border-r-2">
         <div className="flex justify-between items-center">
           <h3 className="text-white text-2xl font-bold">
