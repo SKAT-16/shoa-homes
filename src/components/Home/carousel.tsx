@@ -1,5 +1,5 @@
 import { Carousel, IconButton } from "@material-tailwind/react";
-import available_icon from "../../assets/images/on-sale-bg.png";
+import available_icon from "../../assets/on-sale-bg.png";
 
 const dummyList = [
   {
@@ -121,13 +121,13 @@ function CarouselElement({
   bathRoomCount,
 }: CarouselElmentProps) {
   return (
-    <div className="w-3/4 h-[400px] rounded-3xl relative shadow-2xl border-gray-200 bg-gray-50 p-8 mx-auto flex items-stretch gap-6">
+    <div className="w-3/4 h-[400px] rounded-3xl relative shadow-2xl border-gray-400 bg-gray-100 p-8 mx-auto flex items-stretch gap-6">
       <img
         className="flex-1 w-1/2 object-cover rounded-lg"
         src={image}
         alt="house image"
       />
-      <div className="flex-1 flex flex-col p-4">
+      <div className="text-gray-900 flex-1 flex flex-col p-4">
         <h1 className="text-5xl font-medium mt-4 mb-4">{title},</h1>
         <h4 className="text-2xl font-normal">${price}/sqm,</h4>
         <h5 className="text-xl font-extralight">{size} sqms,</h5>

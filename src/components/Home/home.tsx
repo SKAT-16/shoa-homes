@@ -9,7 +9,7 @@ import Location from "./location";
 function Home() {
   return (
     <div>
-      <h2 className="text-7xl text-center text-light-blue-900 leading-[80px] pt-20 mb-20">
+      <h2 className="text-7xl text-center text-light-blue-900 leading-[80px] pt-20 mb-32">
         <Typewriter
           options={{
             strings: ["Opening Doors!", "Building Opportunities!"],

@@ -1,6 +1,6 @@
-import quality_icon from "../../assets/images/icons/quality.png";
-import convenience_icon from "../../assets/images/icons/convenience.png";
-import affordable_icon from "../../assets/images/icons/affordable.png";
+import quality_icon from "../../assets/icons/quality.png";
+import convenience_icon from "../../assets/icons/convenience.png";
+import affordable_icon from "../../assets/icons/affordable.png";
 
 export default function About() {
   return (

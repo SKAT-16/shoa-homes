@@ -1,7 +1,7 @@
-import facebook_icon from "../../assets/images/icons/facebook.png";
-import instagram_icon from "../../assets/images/icons/instagram.png";
-import linkedin_icon from "../../assets/images/icons/linkedin.png";
-import twitter_icon from "../../assets/images/icons/twitter.png";
+import facebook_icon from "../../assets/icons/facebook.png";
+import instagram_icon from "../../assets/icons/instagram.png";
+import linkedin_icon from "../../assets/icons/linkedin.png";
+import twitter_icon from "../../assets/icons/twitter.png";
 
 function Footer() {
   return (

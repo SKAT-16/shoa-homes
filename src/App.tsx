@@ -6,7 +6,7 @@ import { BrowserRouter } from "react-router-dom";
 function App() {
   return (
     <BrowserRouter>
-      <div className="bg-cyan-50 font-poppins">
+      <div className="bg-blue-gray-50 font-poppins">
         <Header />
         <main className="container mx-auto px-12">
           <AppRouter />

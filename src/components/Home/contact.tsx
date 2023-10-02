@@ -1,5 +1,5 @@
-import email_icon from "../../assets/images/icons/email.png";
-import call_icon from "../../assets/images/icons/call.png";
+import email_icon from "../../assets/icons/email.png";
+import call_icon from "../../assets/icons/call.png";
 
 export default function Contact() {
   return (

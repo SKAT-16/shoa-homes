@@ -1,12 +1,12 @@
 import { Link, Location, useLocation } from "react-router-dom";
-import dark_logo from "../../assets/images/logo-dark-blue.png";
-import light_logo from "../../assets/images/logo-light-white.png";
+import dark_logo from "../../assets/logo-dark-blue.png";
+import light_logo from "../../assets/logo-light-white.png";
 import { useEffect, useState, useRef } from "react";
 
 function Header() {
   const currentPage: Location = useLocation();
   return (
-    <div className="relative px-12 pt-12 pb-5 shadow-md">
+    <div className="relative px-12 pt-12 pb-5 shadow-sm">
       <NavBar page={currentPage.pathname} />
     </div>
   );
