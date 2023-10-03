@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import available_icon from "../../assets/on-sale-bg.png";
 
 const dummyList = [
   {

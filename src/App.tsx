@@ -5,7 +5,7 @@ import { BrowserRouter } from "react-router-dom";
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/shoa-homes">
       <div className="bg-blue-gray-50 font-poppins">
         <Header />
         <main className="container mx-auto px-12">

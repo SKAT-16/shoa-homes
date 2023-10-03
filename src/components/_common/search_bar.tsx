@@ -10,8 +10,7 @@ export default function SearchBar() {
           label="Find your Home"
           color="white"
           className="!font-poppins"
-          icon={<i className="fas fa-search !text-white" />}
-        />
+          icon={<i className="fas fa-search !text-white" />} crossOrigin={undefined}        />
       </div>
 
       <div className="mt-10 flex items-center justify-between gap-5">

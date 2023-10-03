@@ -41,14 +41,14 @@ const dummyList = [
 ];
 
 export default function ProjectDetails() {
-  let params = useParams();
+  const params = useParams();
 
   return (
     <div>
       <div
         className="relative rounded-lg shadow-lg w-full h-[500px] p-6 mt-20"
         style={{
-          backgroundImage: `url(${dummyList[params.projectId].image})`,
+          backgroundImage: `url(${dummyList[params.projectId]?.image})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}>

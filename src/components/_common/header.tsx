@@ -40,7 +40,7 @@ interface NavBarProps {
 }
 function NavBar({ page }: NavBarProps) {
   const [pointerXLocation, setPointerPosition] = useState(0);
-  const navRef = useRef<HTMLAnchorElement | null>(null);
+  const navRef = useRef(null);
 
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     setPointerPosition(e.currentTarget.getBoundingClientRect().left);
@@ -52,8 +52,8 @@ function NavBar({ page }: NavBarProps) {
     });
     const index = foundIndex !== -1 ? foundIndex : 0;
 
-    const currLink: HTMLAnchorElement | null = navRef.current?.children[index];
-    setPointerPosition(currLink.getBoundingClientRect().left);
+    const currLink = navRef.current?.children[index];
+    setPointerPosition(currLink?.getBoundingClientRect().left || 0);
   }, []);
 
   return (
@@ -63,7 +63,7 @@ function NavBar({ page }: NavBarProps) {
         to="/"
         onClick={() =>
           setPointerPosition(
-            navRef.current.children[0].getBoundingClientRect().left
+            navRef.current?.children[0].getBoundingClientRect().left || 0
           )
         }>
         <img
