@@ -23,8 +23,12 @@ const navLinkEndPoints: string[] = [
 
 export default function Header() {
   const currentPage: Location = useLocation();
+
   return (
-    <div className={`relative px-12 pt-12 pb-5 shadow-md ${currentPage.pathname.includes("projects") && "bg-nav-bar"}`}>
+    <div
+      className={`relative px-12 pt-12 pb-5 shadow-md ${
+        currentPage.pathname.includes("projects") && "bg-nav-bar"
+      }`}>
       <NavBar page={currentPage.pathname} />
       {currentPage.pathname.includes("projects") && <SearchBar />}
     </div>
@@ -39,31 +43,27 @@ function NavBar({ page }: NavBarProps) {
   const navRef = useRef<HTMLAnchorElement | null>(null);
 
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    setPointerPosition(
-      e.currentTarget.getBoundingClientRect().left +
-        e.currentTarget.getBoundingClientRect().width / 3
-    );
+    setPointerPosition(e.currentTarget.getBoundingClientRect().left);
   };
 
   useEffect(() => {
-    const index: number = navLinkEndPoints.findIndex((item) => page === item);
+    const foundIndex = navLinkEndPoints.findIndex((item, index) => {
+      if (page.includes(item)) return index;
+    });
+    const index = foundIndex !== -1 ? foundIndex : 0;
+
     const currLink: HTMLAnchorElement | null = navRef.current?.children[index];
-    setPointerPosition(
-      currLink.getBoundingClientRect().left +
-        currLink.getBoundingClientRect().width / 2
-    );
+    setPointerPosition(currLink.getBoundingClientRect().left);
   }, []);
 
   return (
-    <nav className="flex items-center justify-center" >
-
+    <nav className="flex items-center justify-center">
       <PagePointer page={page} xPos={pointerXLocation} />
       <Link
         to="/"
         onClick={() =>
           setPointerPosition(
-            navRef.current.children[0].getBoundingClientRect().left +
-              navRef.current.children[0].getBoundingClientRect().width / 3
+            navRef.current.children[0].getBoundingClientRect().left
           )
         }>
         <img
@@ -74,7 +74,9 @@ function NavBar({ page }: NavBarProps) {
       </Link>
 
       <ul
-        className={`ml-auto flex justify-center space-x-12 text-xl ${page.includes("projects") ? "text-white" : "text-blue-900"}`}
+        className={`ml-auto flex justify-center space-x-12 text-xl ${
+          page.includes("projects") ? "text-white" : "text-blue-900"
+        }`}
         ref={navRef}>
         {navLinkStrings.map((item, index) => (
           <Link

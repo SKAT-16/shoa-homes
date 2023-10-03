@@ -11,10 +11,11 @@ function AppRouter() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/blog" element={<Blog />} />
-      <Route path="/partnership" element={<Partnership />} />
-      <Route path="/projects" element={<Projects />} />
-      <Route path="/projects/:id" element={<ProjectDetails />} />
+      <Route path="blog" element={<Blog />} />
+      <Route path="partnership" element={<Partnership />} />
+      <Route path="projects" element={<Projects />}>
+        <Route path=":projectId" element={<ProjectDetails />} />
+      </Route>
       <Route path="/about" element={<About />} />
       <Route path="/contact" element={<Contact />} />
     </Routes>

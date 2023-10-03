@@ -1,7 +1,9 @@
+import { Link } from "react-router-dom";
 import available_icon from "../../assets/on-sale-bg.png";
 
 const dummyList = [
   {
+    id: 0,
     image:
       "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
     title: "Bole Bulbula Site",
@@ -11,6 +13,7 @@ const dummyList = [
     bathRoomCount: 4,
   },
   {
+    id: 1,
     image:
       "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8aG91c2V8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60",
     title: "Aqaqi Kaliti Site",
@@ -20,6 +23,7 @@ const dummyList = [
     bathRoomCount: 2,
   },
   {
+    id: 2,
     image:
       "https://images.unsplash.com/photo-1600585154526-990dced4db0d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDJ8fHxlbnwwfHx8fHw%3D&auto=format&fit=crop&w=500&q=60",
     title: "Arada Piassa Site",
@@ -41,6 +45,7 @@ export default function PropertyList() {
 }
 
 interface PropertyElmentProps {
+  id: number,
   image: string;
   title: string;
   price: number;
@@ -49,6 +54,7 @@ interface PropertyElmentProps {
   bathRoomCount: number;
 }
 function PropertyElement({
+  id,
   image,
   title,
   price,
@@ -83,9 +89,9 @@ function PropertyElement({
             {bathRoomCount} Bath rooms
           </h5>
         </div>
-        <button className="bg-blue-500 hover:bg-blue-700 text-lg text-white font-light py-2 px-4 rounded-xl mt-auto transition-colors duration-500">
+        <Link to={`/projects/${id}`} className="bg-blue-500 hover:bg-blue-700 text-lg text-white text-center font-light py-2 px-4 rounded-xl mt-auto transition-colors duration-500">
           More Details
-        </button>
+        </Link>
       </div>
     </div>
   );
